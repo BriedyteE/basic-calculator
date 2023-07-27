@@ -1,7 +1,6 @@
 const screen = document.querySelector(".screen");
 
 const multiplicativeActions = {
-  // prettier-ignore
   "×": (value1, value2) => value1 * value2,
   "÷": (value1, value2) => value1 / value2,
 };
