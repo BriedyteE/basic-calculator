@@ -13,11 +13,11 @@ const actions = {
 
 let insertedValues = [];
 
-const isLastValueOperation = () =>
+const isLastValueOperator = () =>
   !!actions[insertedValues[insertedValues.length - 1]];
 
 const calculateAndDisplayResult = () => {
-  if (isLastValueOperation()) {
+  if (isLastValueOperator()) {
     insertedValues.pop();
   }
 
@@ -52,7 +52,7 @@ const displayInsertedValues = () => {
 
 document.querySelectorAll(".numbers button").forEach((numberBtn) => {
   numberBtn.addEventListener("click", () => {
-    if (!insertedValues.length || isLastValueOperation()) {
+    if (!insertedValues.length || isLastValueOperator()) {
       insertedValues.push(numberBtn.textContent);
     } else {
       insertedValues[insertedValues.length - 1] += numberBtn.textContent;
@@ -62,16 +62,16 @@ document.querySelectorAll(".numbers button").forEach((numberBtn) => {
   });
 });
 
-document.querySelectorAll(".operations button").forEach((operationBtn) => {
-  operationBtn.addEventListener("click", (e) => {
-    if (e.target.textContent === "=") {
+document.querySelectorAll(".operators button").forEach((operatorBtn) => {
+  operatorBtn.addEventListener("click", () => {
+    if (operatorBtn.textContent === "=") {
       calculateAndDisplayResult();
       insertedValues = [];
     } else if (insertedValues.length) {
       const idexOfNewValue =
-        insertedValues.length - (isLastValueOperation() ? 1 : 0);
+        insertedValues.length - (isLastValueOperator() ? 1 : 0);
 
-      insertedValues[idexOfNewValue] = e.target.textContent;
+      insertedValues[idexOfNewValue] = operatorBtn.textContent;
       displayInsertedValues();
     }
   });
