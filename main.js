@@ -66,7 +66,6 @@ document.querySelectorAll(".operators button").forEach((operatorBtn) => {
   operatorBtn.addEventListener("click", () => {
     if (operatorBtn.textContent === "=") {
       calculateAndDisplayResult();
-      insertedValues = [];
     } else if (insertedValues.length) {
       const idexOfNewValue =
         insertedValues.length - (isLastValueOperator() ? 1 : 0);
